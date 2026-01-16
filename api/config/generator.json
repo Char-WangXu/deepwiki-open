@@ -1,0 +1,27 @@
+{
+  "default_provider": "openai",
+  "providers": {
+    "dashscope": {
+      "default_model": "qwen3-30",
+      "supportsCustomModel": true,
+      "models": {
+        "qwen3-30": {
+          "temperature": 0.7,
+          "top_p": 0.8
+        }
+      }
+    },
+    "openai": {
+    	 "model_client": "OpenAIClient",  
+      "default_model": "qwen3-30",
+      "supportsCustomModel": true,
+      "models": {
+        "qwen3-30": {
+          "temperature": 0.7,
+          "top_p": 0.8
+        }
+      }
+    }
+  }
+}
+

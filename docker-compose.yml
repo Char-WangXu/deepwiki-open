@@ -1,0 +1,30 @@
+services:
+  deepwiki:
+    image: deepwiki:latest
+    ports:
+      - "8033:8001"  # API port
+      - "3043:3000"  # Next.js port
+    env_file:
+      - .env
+    environment:
+      - TZ=Asia/Shanghai
+      - PORT=8001
+      - NODE_ENV=production
+      - SERVER_BASE_URL=http://localhost:8033
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - LOG_FILE_PATH=${LOG_FILE_PATH:-api/logs/application.log}
+    volumes:
+      - ~/.adalflow:/root/.adalflow      # Persist repository and embedding data
+      - ./api/config:/app/api/config    # Mount config directory
+      - ./.env:/app/.env                # Mount .env file
+      - ./logs:/app/api/logs            # Persist log files to server logs directory
+    # Resource limits for docker-compose up (not Swarm mode)
+    mem_limit: 6g
+    mem_reservation: 2g
+    # Health check configuration
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8033/health"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
