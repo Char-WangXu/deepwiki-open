@@ -172,7 +172,8 @@ deepwiki/
 │   ├── api.py            # FastAPI implementation
 │   ├── rag.py            # Retrieval Augmented Generation
 │   ├── data_pipeline.py  # Data processing utilities
-│   └── requirements.txt  # Python dependencies
+│   ├── pyproject.toml     # Python dependencies (Poetry)
+│   └── poetry.lock        # Locked Python dependency versions
 │
 ├── src/                  # Frontend Next.js app
 │   ├── app/              # Next.js app directory
@@ -601,7 +602,7 @@ DeepResearch takes repository analysis to the next level with a multi-turn resea
 
 To use DeepResearch, simply toggle the "Deep Research" switch in the Ask interface before submitting your question.
 
-## 📱 Screenshots
+## Screenshots
 
 ![DeepWiki Main Interface](screenshots/Interface.png)
 *The main interface of DeepWiki*
